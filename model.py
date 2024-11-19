@@ -27,14 +27,14 @@ class TrafficLightEnv:
         if action == 2: 
             if traffic_volume > 0:
                 reward = 1  
-            else:
-                reward = -1  
+            else: 
+                reward=0
 
-        elif action == 1:
+        if action == 1:
                 reward = 0.5  
 
-        elif action == 0:  
-                reward = 0  
+        if action == 0:  
+                reward = 0.3  
 
         self.current_step += 1
         if self.current_step >= len(self.data):
