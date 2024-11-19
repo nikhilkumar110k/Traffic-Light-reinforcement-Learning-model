@@ -31,7 +31,7 @@ class TrafficLightEnv:
                 reward= -0.1
 
         if action == 1:
-            if traffic_volume<10 & traffic_volume>0:
+            if traffic_volume<10 and traffic_volume>0:
                 reward = 0.5  
             else:
                 reward= -0.1
@@ -40,7 +40,7 @@ class TrafficLightEnv:
             if traffic_volume==0:
                 reward = 0.4  
             else:
-                reward=0.1
+                reward=-0.1
 
 
         self.current_step += 1
