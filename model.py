@@ -25,19 +25,19 @@ class TrafficLightEnv:
         traffic_volume = self.state[1] 
 
         if action == 2: 
-            if traffic_volume > 0:
+            if traffic_volume > 20:
                 reward = 1  
             else: 
                 reward= -0.1
 
         if action == 1:
-            if traffic_volume<10 and traffic_volume>0:
+            if traffic_volume<=20 and traffic_volume>=13:
                 reward = 0.5  
             else:
                 reward= -0.1
 
         if action == 0:  
-            if traffic_volume==0:
+            if traffic_volume<13:
                 reward = 0.4  
             else:
                 reward=-0.1
@@ -105,7 +105,7 @@ class DQNAgent:
 
 def generate_synthetic_traffic_data(num_samples=1000):
     times_of_day = np.random.uniform(0, 24, num_samples)  
-    traffic_volumes = np.random.randint(0, 101, num_samples)  
+    traffic_volumes = np.random.randint(0, 70, num_samples)  
     return np.column_stack((times_of_day, traffic_volumes))
 
 if __name__ == "__main__":
@@ -117,7 +117,7 @@ if __name__ == "__main__":
     agent = DQNAgent(state_size, action_size)
 
     batch_size = 32
-    episodes = 1000
+    episodes = 20
     for e in range(episodes):
         state = env.reset()
         done = False
